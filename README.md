@@ -1,3 +1,9 @@
+# Next JS App Router Crash Course
+
+> https://youtu.be/SzqtewCbRY4?si=zPumjoEg_AXJH3pD
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SzqtewCbRY4?si=BUhWO3ypCO5Eqq50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
