@@ -1,5 +1,8 @@
-// Catch-all Segments: https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#catch-all-segments
-// adding an ellipsis inside the brackets `[...folderName]`
+/**
+Catch-all Segments: https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#catch-all-segments
+
+Dynamic Segments can be extended to catch-all subsequent segments by adding an ellipsis inside the brackets `[...folderName]`
+*/
 
 // slug jadi string[] (string array)
 type CatchAllProps = { params: { slug: string[] } };
@@ -10,7 +13,8 @@ export default function CatchAll(props: CatchAllProps) {
 
   return (
     <div>
-      <h1>CatchAll My Product {params.slug}</h1>
+      <h1>Catch all My Product segments</h1>
+      <h2>{params.slug}</h2>
     </div>
   );
 }
