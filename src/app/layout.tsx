@@ -1,8 +1,17 @@
-import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
-import "./globals.css";
+/** 
+- Pages and Layouts: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
 
-const inter = Nunito({ subsets: ["latin"] });
+- Page: A page is UI that is unique to a route.define pages by exporting a component from a `page.js` file.
+
+- Layouts: A layout is UI that is **shared** between multiple pages. On navigation, layouts preserve state, remain interactive, and do not re-render. Layouts can also be nested.
+*/
+
+import type { Metadata } from "next";
+import { Chilanka } from "next/font/google";
+import "./globals.css";
+import Navbar from "./navbar";
+
+const inter = Chilanka({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,13 +19,25 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      {/* Include shared UI here e.g. a header or sidebar */}
+
+      {/* below is Root Layout (required) <body> tag */}
+      <body className={inter.className}>
+        <Navbar></Navbar>
+        {children}
+      </body>
     </html>
   );
 }
+
+/**
+- first layout.tsx -> access `{children}`, iaitu bergantung pd page yg kita buka (routing mana yg kita buka cth root page.tsx) -> then go to page.tsx
+
+`{children}` is 
+*/
