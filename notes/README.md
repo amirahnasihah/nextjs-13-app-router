@@ -184,3 +184,5 @@ cache: "no-store"; // ada Loading...
 > Error Handling https://nextjs.org/docs/app/building-your-application/routing/error-handling
 
 - hanya buat file `error.tsx` sama dgn loading ui
+- tambah 's' kat products url -> `await fetch("https://fakestoreapi.com/products`
+- error jadi neat
