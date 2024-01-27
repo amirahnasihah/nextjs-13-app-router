@@ -1,17 +1,20 @@
 /**
-- Catch-all Segments: https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#catch-all-segments
+Part 1 - Catch-all Segments: https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#catch-all-segments
 
 - Dynamic Segments can be extended to catch-all subsequent segments by adding an ellipsis inside the brackets `[...folderName]`
 
 - slug jadi string[] (string array)
 
 - kalau folder name [...slug], props name `{ slug: string[] }` pun kena sama [...slug], cth [...catchall]
+
+
+Part 2 - Data Fetching: https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating
 */
 
 // type CatchAllPageProps = { params: { slug: string[] } };
 type CatchAllPageProps = { params: { catchall: string[] } };
 
-export default function CatchAll(props: CatchAllPageProps) {
+export default async function CatchAllPage(props: CatchAllPageProps) {
   const { params } = props;
   console.log(params);
 

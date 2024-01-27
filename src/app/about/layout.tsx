@@ -18,6 +18,9 @@ export default function AboutLayout({
           <Link href={`/about/profile`}>
             <li className="text-blue-200 cursor-pointer">Profile</li>
           </Link>
+          <Link href={`/product`}>
+            <li className="text-blue-200 cursor-pointer">Product</li>
+          </Link>
         </ul>
       </nav>
       {/* will display /about/page.tsx */}

@@ -41,6 +41,15 @@ export default function Navbar() {
               Profile
             </li>
           </Link>
+          <Link href={`/product`}>
+            <li
+              className={`${
+                pathname === "/product" ? "text-blue-200" : "text-white"
+              } cursor-pointer`}
+            >
+              Product
+            </li>
+          </Link>
         </ul>
       </div>
 
