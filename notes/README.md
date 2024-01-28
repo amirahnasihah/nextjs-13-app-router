@@ -213,7 +213,8 @@ export function middleware(request: NextRequest) {
 - `redirect` the incoming request to a different URL
 - `rewrite` the response by displaying a given URL
 
-cth; 
+- cth; kalau nak buat lagi utk URL lain guna conditional statements kena duplicate lagi. ini jadi leceh sbb kena duplicate byk2 utk page yg lain2. utk atasi, guna konsep `matcher`.
+- jadi kita buat satu aturan supaya nanti URL mana yg akan meng-execute middleware
 
 ```typescript
 import { NextResponse } from 'next/server'
@@ -222,16 +223,39 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   // bila request/buka url cth '/about' kita terus redirect ke url '/'
   // cth, kalau belum login akan di redirect ke '/login' page
-  const isLogin = false
+  const isLogin = false;
   if (request.nextUrl.pathname.startsWith('/about')) {
      // belum login redirect ke login page
     if(!isLogin) {
-      return NextResponse.rewrite(new URL('/login', request.url))
+      return NextResponse.redirect(new URL('/login', request.url))
     }
   }
  
   if (request.nextUrl.pathname.startsWith('/dashboard')) {
     return NextResponse.rewrite(new URL('/dashboard/user', request.url))
   }
+}
+```
+
+### `matcher` concept
+
+> matcher allows to filter Middleware to run on specific paths
+
+- cth; kalau nak buat lagi utk URL lain guna conditional statements kena duplicate lagi. ini jadi leceh sbb kena duplicate byk2 utk page yg lain2. utk atasi, guna konsep `matcher`.
+- jadi kita buat satu aturan supaya nanti URL mana yg akan meng-execute middleware
+
+```typescript
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+ 
+export function middleware(request: NextRequest) {
+  const isLogin = false;
+  if(!isLogin) {
+    return NextResponse.redirect(new URL('/login', request.url))
+  }
+}
+
+export const config = {
+  matcher: ["/about/:path*"],
 }
 ```
