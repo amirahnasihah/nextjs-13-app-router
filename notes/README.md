@@ -255,7 +255,8 @@ export function middleware(request: NextRequest) {
   }
 }
 
+// cth, kalau nk ke dashboard kena login dulu
 export const config = {
-  matcher: ["/about/:path*"],
+  matcher: ["/dashboard", "/about/:path*"],
 }
 ```
