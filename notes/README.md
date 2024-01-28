@@ -9,6 +9,7 @@
 - [8. Loading UI \& Error Handling](#8-loading-ui--error-handling)
   - [Loading UI](#loading-ui)
   - [Error Handling](#error-handling)
+- [9. Middleware](#9-middleware)
 
 # 6. Data Fetching
 
@@ -186,3 +187,30 @@ cache: "no-store"; // ada Loading...
 - hanya buat file `error.tsx` sama dgn loading ui
 - tambah 's' kat products url -> `await fetch("https://fakestoreapi.com/products`
 - error jadi neat
+
+# 9. Middleware
+
+> https://nextjs.org/docs/app/building-your-application/routing/middleware
+
+- Middleware runs before cached content and routes are matched
+
+
+```typescript
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+ 
+export function middleware(request: NextRequest) {
+  // bila request/buka url cth '/about' kita terus redirect ke url '/'
+  if (request.nextUrl.pathname.startsWith('/about')) {
+    return NextResponse.rewrite(new URL('/', request.url))
+  }
+ 
+  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    return NextResponse.rewrite(new URL('/dashboard/user', request.url))
+  }
+}
+```
+
+- `redirect` the incoming request to a different URL
+- `rewrite` the response by displaying a given URL
+
